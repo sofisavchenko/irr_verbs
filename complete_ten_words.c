@@ -2,8 +2,8 @@
 #include <locale.h>
 #include <stdlib.h>
 
-double complete_ten_words(double pr)
+double complete_ten_words(double percent)
 {
-    pr = pr * 10.0;
-    return pr;
+    percent = percent * 10.0;
+    return percent;
 }
