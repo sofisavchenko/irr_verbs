@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
-#include"stok.c"
-#include"process.c"
+#include "stok.h"
+#include "process.h"
 
 double scanning()
 {
@@ -17,7 +17,7 @@ double scanning()
         stok(line, ' ', ptr);
        // printf("\n");
         printf(" %d \n", j + 1);
-        printf("\n Первая форма неправильного глагола: %s \n", ptr[0]);
+        printf("\n ГЏГҐГ°ГўГ Гї ГґГ®Г°Г¬Г  Г­ГҐГЇГ°Г ГўГЁГ«ГјГ­Г®ГЈГ® ГЈГ«Г ГЈГ®Г«Г : %s \n", ptr[0]);
         calc += process(ptr, calc);
     }
     fclose(pFile);
