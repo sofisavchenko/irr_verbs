@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
-#include "scanning.c"
-#include "complete_ten_words.c"
+#include "scanning.h"
+#include "complete_ten_words.h"
 
 int main()
 {
