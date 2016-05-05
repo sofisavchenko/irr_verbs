@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
-#include "schr.c"
+#include "schr.h"
 
 int stok(char str[], char delim, char* ptr[])
 {
