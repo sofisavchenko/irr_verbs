@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
-#include"slen.c"
+#include "slen.h"
 
 double process(char* ptr[], double calc)
 {
@@ -9,7 +9,7 @@ double process(char* ptr[], double calc)
     double flg = 0.0; char userverb[1024] = "";
     for (i = 0; i < 2; i++)
     {
-        printf("Äîïèøèòå %d-þ ôîðìó ãëàãîëà \n", i + 2);
+        printf("Ã„Ã®Ã¯Ã¨Ã¸Ã¨Ã²Ã¥ %d-Ã¾ Ã´Ã®Ã°Ã¬Ã³ Ã£Ã«Ã Ã£Ã®Ã«Ã  \n", i + 2);
         scanf("%s", userverb);
         lenusr[i] = slen(userverb);
         lenverb[i] = slen(ptr[i + 1]);
