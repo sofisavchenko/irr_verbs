@@ -1,28 +1,63 @@
 #include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
-#include"slen.c"
+#include "scaning.h"
+int slen(char str[])
+{
+	int len, i=0;
+	while(str[i]!='\0')i++;
+		len=i;
+	return len;
+}
+char toLowCase(char ch)
+{
+	if(ch >= 'A' && ch <= 'Z')
+		return ch + ('a' - 'A');
+	return ch;
+}
+double podschet_flg(int i, double flg, char* ptr[])
+{
+	char userverb[1024] = "";
+	int lenusr[261]={0}, lenverb[261]={0}, n;
+	char *stroka;
+	printf("\n%d) Input %d form of verb \n", i + 2, i + 2);
+	fgets(userverb, 1024, stdin);		
+	flg = 0.0;
+	lenusr[i] = slen(userverb) - 1;//printf("\t\t lenusr %d", lenusr[i]);
+	if(lenusr[i] < 14)//lengh of irr v can't be over 14 symbols
+{
+	int l;
+	for(l = 0; l < lenusr[i]+1; l++)
+	{
+		userverb[l] = toLowCase(userverb[l]);
+	}
 
+	lenverb[i] = slen(ptr[i + 1]);//printf("\t\t lenverb %d\n", lenverb[i]);
+	if (i == 1) lenverb[i] = lenverb[i] - 2;
+	stroka = ptr[i + 1];
+	
+	printf ("%s", stroka);	
+		for(n = 0; n < lenusr[i]; n++)
+		{
+			if(stroka[n] == userverb[n]) flg += 1.0;
+		}
+		flg = flg / lenverb[i];
+	if((flg > 1.0) || (flg < 1.0)) flg = 0;
+	//printf("\n\t %.3f flg \n", flg);
+	return flg;
+}
+	printf("\tAre you sure?\n");	
+	return flg;
+}
 double process(char* ptr[], double calc)
 {
-    int i, lenusr[261] = {0}, lenverb[261] = {0}, n;
-    double flg = 0.0; char userverb[1024] = "";
-    for (i = 0; i < 2; i++)
-    {
-        printf("Допишите %d-ю форму глагола \n", i + 2);
-        scanf("%s", userverb);
-        lenusr[i] = slen(userverb);
-        lenverb[i] = slen(ptr[i + 1]);
-        if (lenusr[i] == lenverb[i])
-        {
-            for(n = 0; n < lenusr[i]; n++)
-            {
-                if(*ptr[i+1] == userverb[n]) flg += 1.0;
-            }
-            flg = flg / lenusr[i];
-        }
-        //printf("\n %.3f \n", flg);
-    }
-    calc += flg;
-    return calc /*/ 2*/;
+	int i;
+	calc = 0;
+	double flg = 0.0;
+	for (i = 0; i < 2; i++)
+	{
+		flg = podschet_flg(i, flg,  ptr);
+		calc = calc + flg;
+	}
+	return calc;
 }
